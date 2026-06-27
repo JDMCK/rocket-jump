@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c28wga23x3nfh"]
+
+[ext_resource type="Script" uid="uid://bxjndltnqoj84" path="res://src/gameplay/components/rocket_launcher/rocket_launcher.gd" id="1_f0m5j"]
+
+[node name="RocketLauncher" type="Node2D" unique_id=1721131595]
+script = ExtResource("1_f0m5j")
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=936671616]
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1890660912]

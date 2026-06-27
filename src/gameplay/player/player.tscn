@@ -1,0 +1,211 @@
+[gd_scene format=3 uid="uid://2jgsa2qjfdqt"]
+
+[ext_resource type="Script" uid="uid://djg3ai15iinh5" path="res://src/gameplay/player/player.gd" id="1_kh5p4"]
+[ext_resource type="Texture2D" uid="uid://cp01kbr7g3gkt" path="res://assets/temp/sprites/knight.png" id="2_64h4j"]
+[ext_resource type="Script" uid="uid://874utrbiayl" path="res://src/gameplay/components/coyote_timer.gd" id="3_k2146"]
+[ext_resource type="Script" uid="uid://dnitbipxjf8j7" path="res://src/gameplay/components/movement.gd" id="4_sjr3t"]
+[ext_resource type="PackedScene" uid="uid://c28wga23x3nfh" path="res://src/gameplay/components/rocket_launcher/rocket_launcher.tscn" id="5_d3trc"]
+[ext_resource type="Resource" uid="uid://buo1i016sy6ul" path="res://src/resources/rocket_launchers/basic_rocket_launcher.tres" id="6_dxsvo"]
+[ext_resource type="Script" uid="uid://cti1yhpifyb7s" path="res://src/gameplay/components/state_tracker.gd" id="7_kjyqo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2146"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjr3t"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3trc"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxsvo"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64h4j"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjyqo"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uia4o"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdc6l"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdbtd"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nem4e"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmrcn"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_en18r"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nor3r"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eivh"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xptrr"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdigr"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymqj1"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c3x0"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(160, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trpe4"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(192, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdkad"]
+atlas = ExtResource("2_64h4j")
+region = Rect2(224, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kjyqo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2146")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjr3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3trc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxsvo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64h4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjyqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uia4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdc6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdbtd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nem4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmrcn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_en18r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nor3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eivh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xptrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdigr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymqj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7c3x0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trpe4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdkad")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uia4o"]
+radius = 5.0990195
+
+[node name="Player" type="CharacterBody2D" unique_id=1981328885]
+collision_layer = 2
+script = ExtResource("1_kh5p4")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=984518053]
+sprite_frames = SubResource("SpriteFrames_kjyqo")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.028499383
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=250017411]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_uia4o")
+
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=1600096080 node_paths=PackedStringArray("body")]
+wait_time = 0.15
+script = ExtResource("3_k2146")
+coyote_time_sec = 0.1
+body = NodePath("..")
+metadata/_custom_type_script = "uid://874utrbiayl"
+
+[node name="Movement" type="Node" parent="." unique_id=2075273209 node_paths=PackedStringArray("body")]
+script = ExtResource("4_sjr3t")
+max_run_speed = 150.0
+run_acceleration_speed = 30.0
+ground_friction_speed = 100.0
+max_strafe_speed = 130.0
+strafe_acceleration_speed = 8.0
+air_friction_speed = 8.0
+knockback_friction_speed = 2.0
+grounded_explosion_dampen = 1.0
+jump_speed = -175.0
+max_fall_speed = 400.0
+body = NodePath("..")
+metadata/_custom_type_script = "uid://dnitbipxjf8j7"
+
+[node name="RocketLauncher" parent="." unique_id=1721131595 instance=ExtResource("5_d3trc")]
+config = ExtResource("6_dxsvo")
+
+[node name="StateTracker" type="Node" parent="." unique_id=1008857509]
+script = ExtResource("7_kjyqo")
+states = Array[String](["idle", "run", "jump", "fall"])
+metadata/_custom_type_script = "uid://cti1yhpifyb7s"
+
+[connection signal="timeout" from="CoyoteTimer" to="CoyoteTimer" method="_on_timeout"]

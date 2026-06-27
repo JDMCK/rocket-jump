@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://bjmvfsc4je7wt"]
+
+[ext_resource type="Script" uid="uid://cdk87dd0a7isx" path="res://src/gameplay/objects/rocket/rocket_explosion.gd" id="1_0j6su"]
+[ext_resource type="Texture2D" uid="uid://dowk6qrbdk7y6" path="res://assets/explosion.png" id="2_aq8iq"]
+
+[sub_resource type="Curve" id="Curve_aq8iq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.02789992, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bts7c"]
+atlas = ExtResource("2_aq8iq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mniy0"]
+atlas = ExtResource("2_aq8iq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhrii"]
+atlas = ExtResource("2_aq8iq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgbid"]
+atlas = ExtResource("2_aq8iq")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo7bg"]
+atlas = ExtResource("2_aq8iq")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xymu"]
+atlas = ExtResource("2_aq8iq")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1icx"]
+atlas = ExtResource("2_aq8iq")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y48yx"]
+atlas = ExtResource("2_aq8iq")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctymj"]
+atlas = ExtResource("2_aq8iq")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i27iq"]
+atlas = ExtResource("2_aq8iq")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hme5"]
+atlas = ExtResource("2_aq8iq")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni1hl"]
+atlas = ExtResource("2_aq8iq")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhdgw"]
+atlas = ExtResource("2_aq8iq")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2b6c"]
+atlas = ExtResource("2_aq8iq")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqu1b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bts7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mniy0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhrii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgbid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo7bg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xymu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1icx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y48yx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctymj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i27iq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hme5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ni1hl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhdgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2b6c")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 27.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aq8iq"]
+
+[node name="RocketExplosion" type="Node2D" unique_id=1336993899]
+script = ExtResource("1_0j6su")
+blast_radius = 25.0
+blast_strength = 175.0
+blast_effect_curve = SubResource("Curve_aq8iq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1857913872]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_hqu1b")
+animation = &"explode"
+autoplay = "explode"
+
+[node name="BlastCast" type="ShapeCast2D" parent="." unique_id=1882096022]
+shape = SubResource("CircleShape2D_aq8iq")
+exclude_parent = false
+target_position = Vector2(0, 0)
+collision_mask = 6
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

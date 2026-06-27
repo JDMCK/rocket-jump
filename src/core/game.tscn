@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://l5jk58lf5c8h"]
+
+[ext_resource type="Script" uid="uid://bimq6mmg10il2" path="res://src/core/game.gd" id="1_yqd5c"]
+
+[node name="Game" type="Node" unique_id=1640674569]
+process_mode = 3
+script = ExtResource("1_yqd5c")
+
+[node name="Systems" type="Node" parent="." unique_id=54398358]
+unique_name_in_owner = true
+
+[node name="World" type="Node2D" parent="." unique_id=2069966455]
+
+[node name="LevelRoot" type="Node2D" parent="World" unique_id=98614870]
+unique_name_in_owner = true
+
+[node name="EntityRoot" type="Node2D" parent="World" unique_id=1074886032]
+unique_name_in_owner = true
+
+[node name="EffectRoot" type="Node2D" parent="World" unique_id=658992233]
+unique_name_in_owner = true
+
+[node name="HudLayer" type="CanvasLayer" parent="." unique_id=1979251996]
+
+[node name="HudRoot" type="Control" parent="HudLayer" unique_id=1408095280]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1482891048]
+
+[node name="PauseRoot" type="Control" parent="PauseLayer" unique_id=1706564377]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1422558843]
+
+[node name="TransitionRoot" type="Control" parent="TransitionLayer" unique_id=1145984059]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="DebugLayer" type="CanvasLayer" parent="." unique_id=899509437]
+
+[node name="DebugRoot" type="Control" parent="DebugLayer" unique_id=1280680638]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true

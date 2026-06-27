@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RocketLauncherConfig" format=3 uid="uid://buo1i016sy6ul"]
+
+[ext_resource type="Script" uid="uid://3kbsjft2ewb0" path="res://src/resources/rocket_launchers/rocket_launcher_config.gd" id="1_goc1c"]
+
+[resource]
+script = ExtResource("1_goc1c")
+cooldown_sec = 0.3
+rocket_speed = 5.0
+metadata/_custom_type_script = "uid://3kbsjft2ewb0"
