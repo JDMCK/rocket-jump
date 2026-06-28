@@ -1,10 +1,13 @@
 class_name Player extends CharacterBody2D
 
 
+signal died
+
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var coyote_timer: CoyoteTimerComponent = $CoyoteTimer
 @onready var movement: Movement = $Movement
 @onready var rocket_launcher: RocketLauncher = $RocketLauncher
+@onready var hit_box: HitBox = $HitBox
 
 func _physics_process(delta: float) -> void:
 	_move_player(delta)
@@ -34,3 +37,9 @@ func _handle_rocket() -> void:
 		var canvas_player_pos: Vector2 = get_global_transform_with_canvas().origin
 		var aim_direction: Vector2 = canvas_player_pos.direction_to(cursor_pos)
 		rocket_launcher.fire(aim_direction)
+
+
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	hit_box.kill()
+	hit_box.spawn_death_smoke()
+	died.emit()

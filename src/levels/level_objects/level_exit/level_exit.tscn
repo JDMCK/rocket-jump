@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://oyvodxsip5ug"]
+
+[ext_resource type="Script" uid="uid://jpriviy0phnv" path="res://src/levels/level_objects/level_exit/level_exit.gd" id="1_488gu"]
+[ext_resource type="Texture2D" uid="uid://cudp2hj4ylb4i" path="res://assets/basictiles.atlas.png" id="2_uwwuw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgg5s"]
+atlas = ExtResource("2_uwwuw")
+region = Rect2(32, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i38h6"]
+atlas = ExtResource("2_uwwuw")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5o372"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgg5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i38h6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwwuw"]
+size = Vector2(20, 18)
+
+[node name="LevelExit" type="Area2D" unique_id=721001487]
+collision_mask = 2
+script = ExtResource("1_488gu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=59315110]
+sprite_frames = SubResource("SpriteFrames_5o372")
+frame_progress = 0.24019393
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1847504476]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_uwwuw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

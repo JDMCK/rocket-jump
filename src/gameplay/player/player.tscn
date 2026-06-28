@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c28wga23x3nfh" path="res://src/gameplay/components/rocket_launcher/rocket_launcher.tscn" id="5_d3trc"]
 [ext_resource type="Resource" uid="uid://buo1i016sy6ul" path="res://src/resources/rocket_launchers/basic_rocket_launcher.tres" id="6_dxsvo"]
 [ext_resource type="Script" uid="uid://cti1yhpifyb7s" path="res://src/gameplay/components/state_tracker.gd" id="7_kjyqo"]
-[ext_resource type="Script" uid="uid://bsra1w6qp4kw1" path="res://src/gameplay/components/killable.gd" id="8_uia4o"]
+[ext_resource type="Script" uid="uid://bsra1w6qp4kw1" path="res://src/gameplay/components/hitbox.gd" id="8_uia4o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k2146"]
 atlas = ExtResource("2_64h4j")
@@ -165,8 +165,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_uia4o"]
 radius = 5.0990195
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rdc6l"]
+radius = 5.0990195
+
 [node name="Player" type="CharacterBody2D" unique_id=1981328885]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_kh5p4")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=984518053]
@@ -209,8 +213,16 @@ script = ExtResource("7_kjyqo")
 states = Array[StringName]([&"idle", &"run", &"jump", &"fall"])
 metadata/_custom_type_script = "uid://cti1yhpifyb7s"
 
-[node name="Killable" type="Node" parent="." unique_id=314736556]
+[node name="HitBox" type="Area2D" parent="." unique_id=677469001]
+collision_layer = 2
+collision_mask = 16
 script = ExtResource("8_uia4o")
 metadata/_custom_type_script = "uid://bsra1w6qp4kw1"
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1929817583]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_rdc6l")
+debug_color = Color(0.9289333, 0.21283168, 0.41638023, 0.41960785)
+
 [connection signal="timeout" from="CoyoteTimer" to="CoyoteTimer" method="_on_timeout"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

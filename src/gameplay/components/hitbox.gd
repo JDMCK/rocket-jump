@@ -1,14 +1,12 @@
-class_name Killable extends Node
+class_name HitBox extends Area2D
 
 signal died
 
 const DEATH_SMOKE = preload("uid://s2yrbef384g8")
 
-@onready var parent: Node2D = get_parent()
-
-@export var animated_sprite_2D: AnimatedSprite2D
-
 var _is_dead: bool = false
+
+@onready var parent: Node2D = get_parent()
 
 func _ready() -> void:
 	assert(parent != null, "Killable must have a parent node")

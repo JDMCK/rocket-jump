@@ -65,6 +65,7 @@ func _init_player() -> void:
 	assert(player != null, "Loaded player scene does not extend Player: " + PLAYER_UID)
 
 	entity_root.add_child(player)
+	player.died.connect(_place_player_in_level)
 
 ## Place player in level's player marker with levels ammo cap.
 func _place_player_in_level() -> void:

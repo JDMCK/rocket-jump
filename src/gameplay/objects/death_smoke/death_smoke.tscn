@@ -48,15 +48,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ht4cp")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
 
 [node name="DeathSmoke" type="AnimatedSprite2D" unique_id=166596217]
 sprite_frames = SubResource("SpriteFrames_ma0wt")
-frame = 4
-frame_progress = 0.013898445
+autoplay = "default"
+frame = 3
+frame_progress = 0.48755494
 script = ExtResource("1_ik1mu")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
