@@ -71,6 +71,9 @@ func _physics_process(delta: float) -> void:
 	
 	body.velocity.y = min(max_fall_speed, body.velocity.y)
 	
+	# Special handling for boosting back up when falling
+	if knockback_velocity.y < 0 and body.velocity.y > 0:
+		body.velocity.y = 0
 	body.velocity += knockback_velocity
 	
 	# Applies delta multiplication internally
@@ -92,7 +95,6 @@ func request_move_direction(direction: Vector2) -> void:
 
 ## Adds velocities from explosions or hits in given direction.
 func request_knockback(knockback_velocity: Vector2) -> void:
-	print("kb vel:", knockback_velocity)
 	_knockback_velocity += knockback_velocity
 	_use_knockback_friction = true
 

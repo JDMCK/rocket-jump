@@ -1,0 +1,23 @@
+[gd_resource type="TileSet" format=3 uid="uid://bjjvhofq60ddr"]
+
+[ext_resource type="Texture2D" uid="uid://cfwya4bid427c" path="res://assets/temp/sprites/world_tileset.png" id="1_516b3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_svc44"]
+texture = ExtResource("1_516b3")
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+4:10/0 = 0
+6:10/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+4:12/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+4:14/0 = 0
+
+[resource]
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 0
+sources/1 = SubResource("TileSetAtlasSource_svc44")

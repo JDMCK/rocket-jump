@@ -1,6 +1,6 @@
 class_name PlayerCamera extends Camera2D
 
-const LERP_WEIGHT: float = 4.0
+const LERP_WEIGHT: float = 6.0
 
 var target: Node2D = null
 

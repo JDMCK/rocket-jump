@@ -33,7 +33,6 @@ func _calculate_explosion() -> void:
 
 ## Applies explosion knockback to body if it has a Movement component.
 func _apply_knockback(body: Node2D, movement: Movement) -> void:
-	print("body p:", body.global_position, "exp p:", global_position)
 	var distance_from_blast_center: float = body.global_position.distance_to(global_position)
 	
 	# How much the blast effected the body from 1 to 0

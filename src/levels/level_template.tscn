@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dnmnqfcfcqhvy"]
+
+[ext_resource type="TileSet" uid="uid://bjjvhofq60ddr" path="res://src/levels/elements/hazards.tres" id="1_jmmgl"]
+
+[node name="LevelTemplate" type="Node2D" unique_id=201155525]
+
+[node name="Tilemaps" type="Node2D" parent="." unique_id=1277337564]
+
+[node name="Background" type="TileMapLayer" parent="Tilemaps" unique_id=953847023]
+
+[node name="Ground" type="TileMapLayer" parent="Tilemaps" unique_id=1546359846]
+
+[node name="Hazards" type="TileMapLayer" parent="Tilemaps" unique_id=1092881509]
+tile_set = ExtResource("1_jmmgl")
+
+[node name="LevelObjects" type="Node2D" parent="." unique_id=1121214484]
+
+[node name="PlayerSpawn" type="Marker2D" parent="LevelObjects" unique_id=101105184]
