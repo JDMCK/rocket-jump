@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://874utrbiayl" path="res://src/gameplay/components/coyote_timer.gd" id="3_k2146"]
 [ext_resource type="Script" uid="uid://dnitbipxjf8j7" path="res://src/gameplay/components/movement.gd" id="4_sjr3t"]
 [ext_resource type="PackedScene" uid="uid://c28wga23x3nfh" path="res://src/gameplay/components/rocket_launcher/rocket_launcher.tscn" id="5_d3trc"]
-[ext_resource type="Resource" uid="uid://buo1i016sy6ul" path="res://src/resources/rocket_launchers/basic_rocket_launcher.tres" id="6_dxsvo"]
 [ext_resource type="Script" uid="uid://cti1yhpifyb7s" path="res://src/gameplay/components/state_tracker.gd" id="7_kjyqo"]
 [ext_resource type="Script" uid="uid://bsra1w6qp4kw1" path="res://src/gameplay/components/hitbox.gd" id="8_uia4o"]
 
@@ -206,7 +205,6 @@ body = NodePath("..")
 metadata/_custom_type_script = "uid://dnitbipxjf8j7"
 
 [node name="RocketLauncher" parent="." unique_id=1721131595 instance=ExtResource("5_d3trc")]
-config = ExtResource("6_dxsvo")
 
 [node name="StateTracker" type="Node" parent="." unique_id=1008857509]
 script = ExtResource("7_kjyqo")

@@ -1,13 +1,19 @@
 class_name Game extends Node
 
-const TEST_LEVEL_00_UID: String = "uid://m8322hkvhvk6"
-const PLAYER_CAMERA_UID: String = "uid://0imsm81omdud"
-const PLAYER_UID: String = "uid://2jgsa2qjfdqt"
+
+const PLAYER_CAMERA_SCENE = preload("uid://0imsm81omdud")
+const PLAYER_SCENE = preload("uid://2jgsa2qjfdqt")
+
+@export var levels: Array[LevelData]
 
 var player: Player = null
 var level_camera: Camera2D = null
 
-var _current_level: Level = null
+var _current_level_scene: Level = null
+var _current_level_index: int = 0:
+	set(value):
+		_current_level_index = clamp(value, 0, levels.size() - 1)
+var _is_transitioning: bool = false
 
 # Systems node
 @onready var systems: Node = %Systems
@@ -25,65 +31,79 @@ var _current_level: Level = null
 
 func _ready() -> void:
 	_init_globals()
-	_init_player()
-	load_level(TEST_LEVEL_00_UID)
+	_init_level_camera()
+	load_level(levels[_current_level_index])
+
 
 ## Called for loading a level scene.
-## NOTE: The input level_scene must extend Level
-func load_level(level_scene_uid: String) -> void:
+func load_level(level_data: LevelData) -> void:
 	# Ensure level loading happens during idle time
-	_deferred_load_level.call_deferred(level_scene_uid)
+	_deferred_load_level.call_deferred(level_data.uid)
 	
 func _deferred_load_level(level_scene_uid: String) -> void:
-	if _current_level != null:
-		_current_level.queue_free()
-		_current_level = null
-			
+	if _current_level_scene != null:
+		_unload_level()
+	
 	var new_level_packed : PackedScene =\
 		ResourceLoader.load(level_scene_uid, "PackedScene") as PackedScene
 	assert(new_level_packed != null, "Failed to load level as a packed scene: " + level_scene_uid)
 		
-	_current_level = new_level_packed.instantiate() as Level
-	assert(_current_level != null, "Loaded level is not of type Level or does not exist")
+	_current_level_scene = new_level_packed.instantiate() as Level
+	assert(_current_level_scene != null, "Loaded level is not of type Level or does not exist")
 		# TODO: main menu should have a fall back scene
 
-	level_root.add_child(_current_level)
-
+	level_root.add_child(_current_level_scene)
+	_current_level_scene.exited_level.connect(_progress_to_next_level)
+	
+	_load_player()
 	_place_player_in_level()
-	_setup_level_camera()
+	_place_camera_in_level()
+	
+	Globals.is_transitioning = false
+
+func _unload_level() -> void:
+		_current_level_scene.queue_free()
+		_current_level_scene.exited_level.disconnect(_progress_to_next_level)
+		_current_level_scene = null
+		# Necessary to avoid collisions while transitioning
+		player.free()
+		player = null
 
 func _init_globals() -> void:
 	Globals.entity_root = entity_root
 	Globals.effect_root = effect_root
 
 ## Instantiates player scene and adds it to the current level
-func _init_player() -> void:
-	var player_scene: PackedScene = ResourceLoader.load(PLAYER_UID) as PackedScene
-	assert(player_scene != null, "Failed to load player scene: " + PLAYER_UID)
-
-	player = player_scene.instantiate() as Player
-	assert(player != null, "Loaded player scene does not extend Player: " + PLAYER_UID)
-
-	entity_root.add_child(player)
+func _load_player() -> void:
+	player = PLAYER_SCENE.instantiate() as Player
+	
+	Globals.entity_root.add_child(player)
 	player.died.connect(_place_player_in_level)
 
 ## Place player in level's player marker with levels ammo cap.
 func _place_player_in_level() -> void:
-	assert(player != null and _current_level != null, "Failed to place player as player or level was null")
+	assert(player != null and _current_level_scene != null, "Failed to place player, as player or level was null")
 	
-	player.global_position = _current_level.get_player_spawn()
-	player.set_ammo_cap(_current_level.config.ammo_capacity)
+	player.global_position = _current_level_scene.get_player_spawn()
+	player.set_ammo_cap(_current_level_scene.ammo_capacity)
+	player.set_has_rocket_launcher(_current_level_scene.has_rocket_launcher)
 
 ## Attaches level camera to player
-func _setup_level_camera() -> void:
-	assert(player != null and _current_level != null, "Failed to setup camera as player or level was null")
-	
-	var player_camera_scene: PackedScene = ResourceLoader.load(PLAYER_CAMERA_UID) as PackedScene
-	assert(player_camera_scene != null, "Failed to load player camera scene: " + PLAYER_CAMERA_UID)
-
-	level_camera = player_camera_scene.instantiate() as Camera2D
-	assert(player != null, "Loaded player camera scene does not extend Camera2D: " + PLAYER_CAMERA_UID)
-	
-	level_camera.target = player
+func _init_level_camera() -> void:	
+	level_camera = PLAYER_CAMERA_SCENE.instantiate() as Camera2D
 	
 	systems.add_child(level_camera)
+
+## Places camera onto player in level
+func _place_camera_in_level() -> void:
+	assert(
+		player != null and level_camera != null and _current_level_scene != null,
+		"Failed to place camera, as player or level was null"
+		)
+	level_camera.target = player
+
+## Progresses to the next level
+func _progress_to_next_level() -> void:
+	Globals.is_transitioning = true
+	_current_level_index += 1
+	load_level(levels[_current_level_index])

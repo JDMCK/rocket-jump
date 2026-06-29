@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RocketLauncherConfig" format=3 uid="uid://buo1i016sy6ul"]
 
-[ext_resource type="Script" uid="uid://3kbsjft2ewb0" path="res://src/resources/rocket_launchers/rocket_launcher_config.gd" id="1_goc1c"]
+[ext_resource type="Script" uid="uid://3kbsjft2ewb0" path="res://src/resources/rocket_launchers/rocket_launcher_data.gd" id="1_goc1c"]
 
 [resource]
 script = ExtResource("1_goc1c")

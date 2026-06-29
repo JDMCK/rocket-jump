@@ -1,4 +1,5 @@
-class_name RocketLauncherConfig extends Resource
+class_name RocketLauncherData extends Resource
+
 
 ## How long in between rocket fires in seconds.
 @export var cooldown_sec: float

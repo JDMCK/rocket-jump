@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://du6t6oepp3g24"]
+
+[ext_resource type="Script" uid="uid://bb12hpqtg4k15" path="res://src/resources/level_data/level_data.gd" id="1_0k38a"]
+
+[resource]
+script = ExtResource("1_0k38a")
+uid = &"uid://m8322hkvhvk6"
+display_name = "Test Playground"
+metadata/_custom_type_script = "uid://bb12hpqtg4k15"

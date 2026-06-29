@@ -3,13 +3,11 @@
 [ext_resource type="Script" uid="uid://bimq6mmg10il2" path="res://src/core/game.gd" id="1_yqd5c"]
 [ext_resource type="Script" uid="uid://bb12hpqtg4k15" path="res://src/resources/level_data/level_data.gd" id="2_ss3ij"]
 [ext_resource type="Resource" uid="uid://du6t6oepp3g24" path="res://src/resources/level_data/test_level_00.tres" id="3_tiefr"]
-[ext_resource type="Resource" uid="uid://dgowgqrk66s2j" path="res://src/resources/level_data/test_level_01.tres" id="4_tiefr"]
-[ext_resource type="PackedScene" uid="uid://dt702acc1u4v1" path="res://src/ui/hud/hud.tscn" id="5_pldwv"]
 
 [node name="Game" type="Node" unique_id=1640674569]
 process_mode = 3
 script = ExtResource("1_yqd5c")
-levels = Array[ExtResource("2_ss3ij")]([ExtResource("3_tiefr"), ExtResource("4_tiefr")])
+levels = Array[ExtResource("2_ss3ij")]([ExtResource("3_tiefr"), null, null])
 
 [node name="Systems" type="Node" parent="." unique_id=54398358]
 unique_name_in_owner = true
@@ -34,9 +32,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
-
-[node name="Hud" parent="HudLayer/HudRoot" unique_id=895110934 instance=ExtResource("5_pldwv")]
-layout_mode = 1
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1482891048]
 

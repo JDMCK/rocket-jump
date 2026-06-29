@@ -17,6 +17,10 @@ func _physics_process(delta: float) -> void:
 func set_ammo_cap(ammo_cap: int) -> void:
 	rocket_launcher.ammo_capacity = ammo_cap
 
+## Sets whether or not the player has access to the rocket launcher.
+func set_has_rocket_launcher(has_rocket_launcher: bool) -> void:
+	rocket_launcher.enabled = has_rocket_launcher
+
 func _move_player(_delta: float) -> void:
 	var input_direction: Vector2 = Vector2(Input.get_axis("left", "right"), 0)
 	#
@@ -32,7 +36,7 @@ func _move_player(_delta: float) -> void:
 		sprite.flip_h = false
 
 func _handle_rocket() -> void:
-	if Input.is_action_just_pressed("primary"):
+	if Input.is_action_just_pressed("primary") and rocket_launcher.enabled:
 		var cursor_pos: Vector2 = get_viewport().get_mouse_position()
 		var canvas_player_pos: Vector2 = get_global_transform_with_canvas().origin
 		var aim_direction: Vector2 = canvas_player_pos.direction_to(cursor_pos)

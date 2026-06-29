@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://dgowgqrk66s2j"]
+
+[ext_resource type="Script" uid="uid://bb12hpqtg4k15" path="res://src/resources/level_data/level_data.gd" id="1_0hr03"]
+
+[resource]
+script = ExtResource("1_0hr03")
+uid = &"uid://b3hv1b2ul8g7n"
+display_name = "Intro Cave"
+metadata/_custom_type_script = "uid://bb12hpqtg4k15"

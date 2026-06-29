@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dt702acc1u4v1"]
+
+[ext_resource type="Texture2D" uid="uid://c0ua0f5rlljhe" path="res://assets/temp/sprites/fruit.png" id="1_jobw0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvkdw"]
+atlas = ExtResource("1_jobw0")
+region = Rect2(16, 16, 16, 16)
+
+[node name="Hud" type="Control" unique_id=895110934]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1041890293]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=904601184]
+layout_mode = 2
+texture = SubResource("AtlasTexture_cvkdw")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer" unique_id=1148409084]
+layout_mode = 2
+texture = SubResource("AtlasTexture_cvkdw")
+expand_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer" unique_id=147828014]
+layout_mode = 2
+texture = SubResource("AtlasTexture_cvkdw")
+expand_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="HBoxContainer" unique_id=1416810692]
+layout_mode = 2
+texture = SubResource("AtlasTexture_cvkdw")
+expand_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="HBoxContainer" unique_id=1732120775]
+layout_mode = 2
+texture = SubResource("AtlasTexture_cvkdw")
+expand_mode = 3
